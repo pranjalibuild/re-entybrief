@@ -1023,6 +1023,79 @@ function FrameworkCard({ fw, index, returnPath }) {
   );
 }
 
+// ─── Feedback Form ───────────────────────────────────────────────────────────
+
+function FeedbackForm() {
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ "form-name": "feedback", message }).toString(),
+    })
+      .then(() => { setStatus("sent"); setMessage(""); })
+      .catch(() => setStatus("error"));
+  };
+
+  const cardStyle = {
+    marginTop: "48px",
+    textAlign: "left",
+    background: "rgba(255,255,255,0.55)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid rgba(180,160,140,0.15)",
+    borderRadius: "16px",
+    padding: "28px",
+  };
+
+  if (status === "sent") return (
+    <div style={{ ...cardStyle, textAlign: "center" }}>
+      <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: "22px", color: "#2c2417", marginBottom: "8px" }}>
+        Thank you.
+      </div>
+      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "14px", color: "#8a7b6b" }}>
+        Your feedback helps shape what this becomes.
+      </div>
+    </div>
+  );
+
+  return (
+    <form name="feedback" onSubmit={handleSubmit} style={cardStyle}>
+      <input type="hidden" name="form-name" value="feedback" />
+      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "11px", letterSpacing: "2px", textTransform: "uppercase", color: "#b07d62", fontWeight: 500, marginBottom: "10px" }}>
+        Help us improve
+      </div>
+      <div style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: "20px", color: "#2c2417", marginBottom: "16px" }}>
+        What would help you most right now?
+      </div>
+      <textarea
+        name="message"
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        required
+        rows={4}
+        placeholder="What's missing? What would make this more useful for your return?"
+        style={{ width: "100%", fontFamily: "'DM Sans', sans-serif", fontSize: "14px", color: "#2c2417", background: "rgba(255,255,255,0.7)", border: "1px solid rgba(180,160,140,0.25)", borderRadius: "10px", padding: "14px", resize: "vertical", outline: "none", lineHeight: 1.6, boxSizing: "border-box" }}
+      />
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        style={{ marginTop: "12px", background: "#2c2417", border: "none", borderRadius: "10px", padding: "12px 24px", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: "13px", fontWeight: 500, color: "#d4a574", opacity: status === "sending" ? 0.6 : 1 }}
+      >
+        {status === "sending" ? "Sending..." : "Send feedback"}
+      </button>
+      {status === "error" && (
+        <div style={{ marginTop: "10px", fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#c47a5a" }}>
+          Something went wrong. Try again or email directly.
+        </div>
+      )}
+    </form>
+  );
+}
+
 // ─── Main App ────────────────────────────────────────────────────────────────
 
 export default function ReEntryBrief() {
@@ -1821,78 +1894,7 @@ export default function ReEntryBrief() {
                 </button>
 
                 {/* Feedback form */}
-                <form
-                  name="feedback"
-                  method="POST"
-                  data-netlify="true"
-                  style={{
-                    marginTop: "48px",
-                    textAlign: "left",
-                    background: "rgba(255,255,255,0.55)",
-                    backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(180,160,140,0.15)",
-                    borderRadius: "16px",
-                    padding: "28px",
-                  }}
-                >
-                  <input type="hidden" name="form-name" value="feedback" />
-                  <div style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "11px",
-                    letterSpacing: "2px",
-                    textTransform: "uppercase",
-                    color: "#b07d62",
-                    fontWeight: 500,
-                    marginBottom: "10px",
-                  }}>
-                    Help us improve
-                  </div>
-                  <div style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
-                    fontSize: "20px",
-                    color: "#2c2417",
-                    marginBottom: "16px",
-                  }}>
-                    What would help you most right now?
-                  </div>
-                  <textarea
-                    name="message"
-                    required
-                    rows={4}
-                    placeholder="What's missing? What would make this more useful for your return?"
-                    style={{
-                      width: "100%",
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "14px",
-                      color: "#2c2417",
-                      background: "rgba(255,255,255,0.7)",
-                      border: "1px solid rgba(180,160,140,0.25)",
-                      borderRadius: "10px",
-                      padding: "14px",
-                      resize: "vertical",
-                      outline: "none",
-                      lineHeight: 1.6,
-                      boxSizing: "border-box",
-                    }}
-                  />
-                  <button
-                    type="submit"
-                    style={{
-                      marginTop: "12px",
-                      background: "#2c2417",
-                      border: "none",
-                      borderRadius: "10px",
-                      padding: "12px 24px",
-                      cursor: "pointer",
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "13px",
-                      fontWeight: 500,
-                      color: "#d4a574",
-                    }}
-                  >
-                    Send feedback
-                  </button>
-                </form>
+                <FeedbackForm />
               </div>
             </FadeIn>
 
