@@ -20,7 +20,7 @@ The Re-Entry Brief is a distillation tool built on 289 episodes of [Lenny's Podc
 Select the dates you were away. Get one-paragraph takeaways from every episode that dropped during your leave — filterable by topic (AI, leadership, product, startups, and more). Read one in two minutes, or skim them all in fifteen.
 
 ### What nobody tells you about coming back
-Quotes, stories, and frameworks from product leaders who've navigated re-entry firsthand: imposter syndrome, career pivots, invisible rules, and the things nobody prepares you for. Women's voices are front and center — in 289 episodes, only 13% feature women. Their signal gets buried. Not here.
+Quotes, stories, and frameworks from product leaders who've navigated re-entry firsthand: imposter syndrome, career pivots, invisible rules, and the things nobody prepares you for. Women make up nearly a third of Lenny's guests — but the conversation about career breaks, caregiving, and coming back after time away is almost absent from those episodes. We found it and brought it forward.
 
 ### Return path personalization
 Four paths. Select yours and the content re-sorts instantly around what's most relevant:

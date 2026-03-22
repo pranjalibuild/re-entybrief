@@ -428,7 +428,7 @@ function FadeIn({ children, delay = 0, style = {} }) {
 function GenderVisualization() {
   const [ref, visible] = useInView(0.3);
   const total = 289;
-  const women = 38;
+  const women = 98;
   const dots = [];
 
   for (let i = 0; i < total; i++) {
@@ -482,10 +482,10 @@ function GenderVisualization() {
           maxWidth: "400px",
           margin: "0 auto",
         }}>
-          episodes of Lenny's Podcast feature women guests. That's{" "}
-          <span style={{ color: "#c47a5a", fontWeight: 600 }}>13%</span>.
+          Women are nearly 1 in 3 of Lenny's{" "}
+          <span style={{ color: "#c47a5a", fontWeight: 600 }}>289 guests</span>.
           <br />
-          The women most likely to take a career break are the least represented in the conversation about coming back. We're fixing that.
+          But the conversation about returning after a career break? Almost absent from those episodes. We found it and surfaced it here.
         </div>
       </div>
     </div>
@@ -1234,7 +1234,7 @@ export default function ReEntryBrief() {
               lineHeight: 1.7,
               margin: 0,
             }}>
-              Career breaks happen for many reasons. But the data is clear: women are far more likely to be the ones who step away, for maternity leave, for caregiving, for family. That's why we're putting a spotlight on their voices specifically.
+              Women make up about a third of Lenny's guests, well-represented across 289 episodes. But the specific conversation about career breaks, caregiving, and coming back after time away? Almost invisible in that catalog. We found it and brought it forward.
             </p>
           </div>
           <GenderVisualization />
@@ -1708,7 +1708,7 @@ export default function ReEntryBrief() {
                 lineHeight: 1.6,
                 margin: "0 0 24px 0",
               }}>
-                They interviewed in their third trimester. They worked from bathrooms with three kids. They started over after caregiving breaks. In 289 episodes, only 13% feature women. Their signal gets buried. Not here.
+                They interviewed in their third trimester. They worked from bathrooms with three kids. They started over after caregiving breaks. Women are nearly 1 in 3 of Lenny's guests. But the conversation about returning after a career break? Almost absent. We found it.
               </p>
               {/* Path selector inline */}
               <PathSelector returnPath={returnPath} onSelect={setReturnPath} />
