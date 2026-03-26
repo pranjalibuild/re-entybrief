@@ -472,7 +472,7 @@ function GenderVisualization() {
           color: "#2c2417",
           marginBottom: "6px",
         }}>
-          38 out of 289
+          98 out of 289
         </div>
         <div style={{
           fontFamily: "'DM Sans', sans-serif",
@@ -485,7 +485,7 @@ function GenderVisualization() {
           Women are nearly 1 in 3 of Lenny's{" "}
           <span style={{ color: "#c47a5a", fontWeight: 600 }}>289 guests</span>.
           <br />
-          But the conversation about returning after a career break? Almost absent from those episodes. We found it and surfaced it here.
+          But the advice for someone coming back after time away? Scattered across hundreds of hours, easy to miss entirely. We found it and surfaced it here.
         </div>
       </div>
     </div>
